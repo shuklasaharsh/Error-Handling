@@ -1,6 +1,6 @@
 let mailDetails = {
-    user: "Your Email here",
-    pass: "Password"
+    user: "shukla.saharsh7.work@gmail.com",
+    pass: "DeltaS>0"
 }
 
 module.exports = {
