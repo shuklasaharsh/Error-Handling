@@ -1,0 +1,27 @@
+{
+  "name": "error-handling",
+  "version": "1.0.0",
+  "description": "This Application Handles errors on your existing server",
+  "main": "errorHandler.js",
+  "dependencies": {
+    "nodemailer": "^6.6.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuklasaharsh/weather-app.git"
+  },
+  "keywords": [
+    "Server",
+    "Errors"
+  ],
+  "author": "Saharsh Shukla <saharsh.shukla2018@vitstudent.ac.in>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shuklasaharsh/weather-app/issues"
+  },
+  "homepage": "https://github.com/shuklasaharsh/weather-app#readme"
+}
