@@ -14,7 +14,7 @@
 ### Usage
 ```js
 const errorHandler = require('./errorHandler')
-let sendTo = "shukla.saharsh7@gmail.com"
+let sendTo = "Email Here"
 
 
 try {
