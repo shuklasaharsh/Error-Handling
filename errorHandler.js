@@ -9,7 +9,7 @@ const loadErrors = () => {
         const errors = fs.readFileSync('./errors.json')
         const dataJSON = errors.toString()
         return JSON.parse(dataJSON)
-    } catch (e) {
+    }  catch (e) {
         return []
     }
 }
@@ -22,6 +22,7 @@ const errorHandling = (e) => {
     errors.push(errorJSON)
     errors = JSON.stringify(errors)
     fs.writeFileSync('./errors.json', errors)
+    let info = mailUtilities.sendMailTo("shukla.saharsh7@gmail.com")
     return 1
 }
 
