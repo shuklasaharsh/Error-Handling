@@ -1,0 +1,17 @@
+{
+  "from": "Fred Foo 👻\" <foo@example.com>",
+  "to": "shukla.saharsh7@gmail.com",
+  "subject": "subject",
+  "text": "mailString",
+  "html": "<p>Your server has errors. Please check your code.<br>The log file is attached.</p>",
+  "attachments": [
+    {
+      "filename": "errors.json",
+      "content": "fs.createReadStream(./errors.json)"
+    }
+  ],
+  "envelope": {
+    "from": "Error Support <errorsupport@c4projects.com>",
+    "to": "sendTo"
+  }
+}
