@@ -22,7 +22,7 @@ const createMail = async (sendTo) => {
     let mailString = "Your server has errors. Please check your code.\nThe log file is attached."
     let subject = "Error in server"
     return {
-        from: 'Fred Foo 👻\" <foo@example.com>',
+        from: sendTo,
         to: 'shukla.saharsh7@gmail.com',
         subject: subject,
         text: mailString,
@@ -46,20 +46,21 @@ const sendMailTo = async (sendTo) => {
     let subject = "Error in server"
     // let username = CONSTANTS.mailDetails.user
     // let password = CONSTANTS.mailDetails.pass
-    let testAccount = await mailer.createTestAccount();
+    let testAccount = CONSTANTS.Account
     let transporter;
     transporter = mailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false,
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
         auth: {
             user: testAccount.user,
             pass: testAccount.pass,
         }
     });
+
     let message = {
-        from: 'Fred Foo 👻\" <foo@example.com>',
-        to: 'shukla.saharsh7@gmail.com',
+        from: 'shukla.saharsh7.work@gmail.com',
+        to: sendTo,
         subject: subject,
         text: mailString,
         html: "<p>Your server has errors. Please check your code.<br>The log file is attached.</p>",
@@ -75,7 +76,7 @@ const sendMailTo = async (sendTo) => {
         }
     }
     let info = await transporter.sendMail(message)
-    console.log("Response: " + info)
+    console.log("Response: " + JSON.stringify(info))
     let d = Date.now()
     d = d.toString()
     let logData = {
@@ -83,8 +84,8 @@ const sendMailTo = async (sendTo) => {
         Response: info
     }
 
-    // fs.writeFileSync('./log.json', logData)
-    console.log("Preview URL: %s", mailer.getTestMessageUrl(info));
+    fs.writeFileSync('./log.json', JSON.stringify(logData))
+    console.log(logData)
 }
 
 
