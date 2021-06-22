@@ -1,4 +1,7 @@
 # Basic Error Handling for Servers using MERN
+```diff
+! Please note that the project is still under developement
+```
 
 ## Premise and Aim of the project
 - This project will be released as an NPM package
