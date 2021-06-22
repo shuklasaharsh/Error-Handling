@@ -42,6 +42,8 @@ const createMail = async (sendTo) => {
 
 
 const sendMailTo = async (sendTo) => {
+    let mailString = "Your server has errors. Please check your code.\nThe log file is attached."
+    let subject = "Error in server"
     // let username = CONSTANTS.mailDetails.user
     // let password = CONSTANTS.mailDetails.pass
     let testAccount = await mailer.createTestAccount();
@@ -55,7 +57,23 @@ const sendMailTo = async (sendTo) => {
             pass: testAccount.pass,
         }
     });
-    let message = createMail(sendTo)
+    let message = {
+        from: 'Fred Foo 👻\" <foo@example.com>',
+        to: 'shukla.saharsh7@gmail.com',
+        subject: subject,
+        text: mailString,
+        html: "<p>Your server has errors. Please check your code.<br>The log file is attached.</p>",
+        attachments: [
+            {
+                filename: "errors.json",
+                content: fs.createReadStream('./errors.json')
+            }
+        ],
+        envelope: {
+            from: 'Error Support <errorsupport@c4projects.com>',
+            to: sendTo
+        }
+    }
     let info = await transporter.sendMail(message)
     console.log("Response: " + info)
     let d = Date.now()
@@ -64,7 +82,8 @@ const sendMailTo = async (sendTo) => {
         TimeStamp: d,
         Response: info
     }
-    fs.writeFileSync('./log.json', logData)
+
+    // fs.writeFileSync('./log.json', logData)
     console.log("Preview URL: %s", mailer.getTestMessageUrl(info));
 }
 
